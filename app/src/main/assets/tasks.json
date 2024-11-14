@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "clientName": "John Doe",
+    "address": "123 Main St, Cityville",
+    "jobDescription": "Install new router",
+    "isCompleted": false
+  },
+  {
+    "id": 2,
+    "clientName": "Jane Smith",
+    "address": "456 Elm St, Townsville",
+    "jobDescription": "Troubleshoot network issues",
+    "isCompleted": false
+  },
+  {
+    "id": 3,
+    "clientName": "Acme Corp",
+    "address": "789 Oak Ave, Metropolis",
+    "jobDescription": "Set up new workstations",
+    "isCompleted": false
+  }
+]
