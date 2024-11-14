@@ -23,8 +23,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val loginError: StateFlow<String?> = _loginError
 
     // Hardcoded credentials
-    private val hardcodedUsername = "technician"
-    private val hardcodedPassword = "password123"
+    private val hardcodedUsername = "cst3115"
+    private val hardcodedPassword = "3115"
 
     fun login(username: String, password: String, onSuccess: () -> Unit) {
         _isLoading.value = true
