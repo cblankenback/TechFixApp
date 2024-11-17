@@ -2,22 +2,28 @@
   {
     "id": 1,
     "clientName": "John Doe",
-    "address": "123 Main St, Cityville",
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA",
     "jobDescription": "Install new router",
-    "isCompleted": false
+    "isCompleted": false,
+    "latitude": 37.4220,
+    "longitude": -122.0841
   },
   {
     "id": 2,
     "clientName": "Jane Smith",
-    "address": "456 Elm St, Townsville",
+    "address": "1 Apple Park Way, Cupertino, CA",
     "jobDescription": "Troubleshoot network issues",
-    "isCompleted": false
+    "isCompleted": false,
+    "latitude": 37.3349,
+    "longitude": -122.0090
   },
   {
     "id": 3,
     "clientName": "Acme Corp",
-    "address": "789 Oak Ave, Metropolis",
+    "address": "350 Fifth Avenue, New York, NY",
     "jobDescription": "Set up new workstations",
-    "isCompleted": false
+    "isCompleted": false,
+    "latitude": 40.7484,
+    "longitude": -73.9857
   }
 ]

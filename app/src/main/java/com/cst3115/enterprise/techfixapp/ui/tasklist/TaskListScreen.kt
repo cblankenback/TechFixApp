@@ -12,6 +12,7 @@ import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -52,8 +53,17 @@ fun TaskListScreen(
                         }
                     }) {
                         Icon(
-                            imageVector = Icons.Default.ExitToApp,
+                            imageVector = Icons.AutoMirrored.Filled.ExitToApp,
                             contentDescription = "Logout"
+                        )
+                    }
+                    IconButton(onClick = {
+                        // Navigate to the Map Screen
+                        navController.navigate("map")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Map,
+                            contentDescription = "Map"
                         )
                     }
                 }

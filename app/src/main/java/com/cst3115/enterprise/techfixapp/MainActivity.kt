@@ -1,6 +1,8 @@
 package com.cst3115.enterprise.techfixapp
 // MainActivity.kt
 
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,14 +16,22 @@ import androidx.navigation.compose.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.cst3115.enterprise.techfixapp.ui.login.LoginScreen
+import com.cst3115.enterprise.techfixapp.ui.map.MapScreen
 import com.cst3115.enterprise.techfixapp.ui.tasklist.TaskListScreen
 import com.cst3115.enterprise.techfixapp.ui.theme.TechFixAppTheme
 import com.cst3115.enterprise.techfixapp.viewmodel.LoginViewModel
 import com.cst3115.enterprise.techfixapp.ui.tasklist.TaskDetailScreen
+import com.google.android.gms.maps.MapsInitializer
+import com.google.android.libraries.places.api.Places
+import org.jetbrains.annotations.Debug
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Programmatically set the Google Maps API key
+        Places.initialize(this, BuildConfig.MAPS_API_KEY)
+
         setContent {
             TechFixAppTheme {
                 val navController = rememberNavController()
@@ -52,6 +62,10 @@ class MainActivity : ComponentActivity() {
                     ) { backStackEntry ->
                         val taskId = backStackEntry.arguments?.getInt("taskId") ?: 0
                         TaskDetailScreen(taskId = taskId, navController = navController)
+                    }
+
+                    composable("map") {
+                        MapScreen(navController = navController)
                     }
                 }
             }

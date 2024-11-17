@@ -2,6 +2,7 @@ package com.cst3115.enterprise.techfixapp.viewmodel
 
 
 import android.app.Application
+import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.cst3115.enterprise.techfixapp.data.model.Task
@@ -9,6 +10,10 @@ import com.cst3115.enterprise.techfixapp.data.repository.TaskRepository
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+
 import kotlinx.coroutines.launch
 class TaskDetailViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -20,12 +25,6 @@ class TaskDetailViewModel(application: Application) : AndroidViewModel(applicati
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating: StateFlow<Boolean> = _isUpdating
 
-    /**
-     * Fetches a specific task by its ID.
-     *
-     * @param taskId The unique identifier of the task.
-     * @return A StateFlow containing the task.
-     */
     fun getTask(taskId: Int): StateFlow<Task?> {
         viewModelScope.launch {
             val tasks = taskRepository.getTasks()
@@ -65,4 +64,7 @@ class TaskDetailViewModel(application: Application) : AndroidViewModel(applicati
             _isUpdating.value = false
         }
     }
+
+
+
 }

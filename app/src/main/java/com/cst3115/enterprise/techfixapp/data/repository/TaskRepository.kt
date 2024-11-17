@@ -1,20 +1,15 @@
-package com.cst3115.enterprise.techfixapp.data.repository
+// com.cst3115.enterprise.techfixapp.data.repository.TaskRepository.kt
 
+package com.cst3115.enterprise.techfixapp.data.repository
 
 import android.content.Context
 import com.cst3115.enterprise.techfixapp.data.model.Task
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-
-
 import com.cst3115.enterprise.techfixapp.utils.TaskCompletionManager
-
 import java.io.File
-
-
 
 class TaskRepository(private val context: Context) {
 
@@ -32,7 +27,7 @@ class TaskRepository(private val context: Context) {
     suspend fun getTasks(): List<Task> {
         return withContext(Dispatchers.IO) {
             if (!file.exists()) {
-                // If the file doesn't exist in internal storage, copy it from assets
+                // Copy tasks.json from assets to internal storage
                 context.assets.open(fileName).use { input ->
                     file.outputStream().use { output ->
                         input.copyTo(output)
@@ -44,11 +39,14 @@ class TaskRepository(private val context: Context) {
             val tasks: List<Task> = gson.fromJson(jsonString, taskListType)
 
             // Update each task's isCompleted status based on SharedPreferences
-            tasks.map { task ->
+            val updatedTasks = tasks.map { task ->
                 task.copy(isCompleted = taskCompletionManager.isTaskCompleted(task.id))
             }
+
+            updatedTasks // Return the updated task list
         }
     }
+
 
     /**
      * Updates the completion status of a task both in SharedPreferences and the JSON file.
@@ -64,7 +62,6 @@ class TaskRepository(private val context: Context) {
             // Optionally, update the JSON file if you want to persist the status there as well
             // For this implementation, we're handling status via SharedPreferences only
             // If you prefer to update the JSON file as well, uncomment the following lines:
-
 
 //            val tasks = getTasks().toMutableList()
 //            val index = tasks.indexOfFirst { it.id == taskId }
