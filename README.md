@@ -26,7 +26,7 @@ TechFixApp is an Android application designed for technicians to manage their da
 
    File > import from verison control > paste the link > import
    ```bash
-   https://github.com/yourusername/techfixapp.git
+   https://github.com/cblankenback/TechFixApp.git
    ```
 
 
